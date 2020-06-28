@@ -6,11 +6,12 @@ app = FlaskAPI(__name__)
 
 @app.route("/sortBubble", methods=['POST'])
 def sortBubble():
-	print(request.data.get('array'))
-	return request.data
+    collection = request.data.get('array')
+    collection = provideBubbleSort(collection)
+    return {"result": collection}
 
 def provideBubbleSort(collection):
-	length = len(collection)
+    length = len(collection)
     for i in range(length - 1):
         swapped = False
         for j in range(length - 1 - i):
