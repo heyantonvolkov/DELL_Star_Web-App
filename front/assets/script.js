@@ -31,19 +31,15 @@ window.onload = () => {
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'no-cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
       },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *client
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
-    return await response.json(); // parses JSON response into native JavaScript objects
+    return await response;
   }
 
-  postData('http://127.0.0.1:5000', 1)
+  postData('http://127.0.0.1:5000/sortBubble', {"array": [1, 3, 5]})
     .then((response) => {
       console.log(response); // JSON data parsed by `response.json()` call
     });
