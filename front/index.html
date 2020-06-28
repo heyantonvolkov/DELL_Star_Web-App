@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dell Star Program</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./assets/style.css">
+</head>
+<body>
+	<h1>Sorting algorithms speed test</h1>
+	
+	<label for="numbers">Share some numbers and check the time to sort</label>
+	<textarea name="numbers" id="numbers"></textarea>
+
+	<div class="controls">
+		<article class="control">
+			<h3>Сортировка пузырьком</h3>
+			<button id="js-buttonSortBuble">Погнали</button>
+		</article>
+
+		<article class="control">
+			<h3>Сортировка как-то еще</h3>
+			<button id="js-buttonSortFib">Погнали</button>
+		</article>
+	</div>
+
+	<div class="result" id="js-result">
+		<h2>Результат:</h2>
+		<p id="js-resultScore">24.4 seconds</p>
+	</div>
+
+	<script type="text/javascript" src="./assets/script.js"></script>
+</body>
+</html>
