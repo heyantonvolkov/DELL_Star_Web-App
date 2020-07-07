@@ -21,29 +21,28 @@ window.onload = () => {
     document.getElementById('js-result').classList.add('-visible');
   }
 
-  function sendSortRequest(userInput) {
-    postData('http://127.0.0.1:5000/sortBubble', {"data": userInput})
-        .then((response) => {
-          console.log(response); // JSON data parsed by `response.json()` call
-          if (!response.err) {
-
-          }
-          setResultScore(response.score, response.sortedInput);
+  async function sendSortRequest(userInput) {
+    axios.post('http://89.223.26.226:5000/sortBubble', userInput)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
         });
   }
 
-  async function postData(url, data) {
-    
-    const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: data // body data type must match "Content-Type" header
-    });
-    return response;
-  }
+  // async function postData(url, data) {
+  //
+  //   const response = await fetch(url, {
+  //     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+  //     mode: 'no-cors', // no-cors, *cors, same-origin
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify(data) // body data type must match "Content-Type" header
+  //   });
+  //   return response;
+  // }
 }
 
