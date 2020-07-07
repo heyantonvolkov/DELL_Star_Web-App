@@ -16,6 +16,7 @@ def sortBubble():
     return {"result": collection, "resolveTime": resolveTime}
 
 def provideBubbleSort(collection):
+    print('HERE', collection)
     length = len(collection)
     for i in range(length - 1):
         swapped = False

@@ -22,13 +22,19 @@ window.onload = () => {
   }
 
   async function sendSortRequest(userInput) {
-    axios.post('http://89.223.26.226:5000/sortBubble', userInput)
-        .then(function (response) {
+    $.post(
+        'http://89.223.26.226:5000/sortBubble',
+        {array: userInput},
+        response => {
           console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+          // const result = JSON.parse(response);
+          // console.log(result); // JSON data parsed by `response.json()` call
+          // if (!result.status) {
+          //   alert('Ошибка =(');
+          // } else {
+          //   setResultScore(response.score, response.sortedInput);
+          // }
+    })
   }
 
   // async function postData(url, data) {
