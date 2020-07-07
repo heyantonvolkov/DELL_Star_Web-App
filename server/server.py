@@ -1,14 +1,16 @@
 from flask_api import FlaskAPI
 from flask import request
+import time
 
 app = FlaskAPI(__name__)
-
 
 @app.route("/sortBubble", methods=['POST'])
 def sortBubble():
     collection = request.data.get('array')
+    startTime = time.time()
     collection = provideBubbleSort(collection)
-    return {"result": collection}
+    resolveTime = time.time() - startTime
+    return {"result": collection, "resolveTime": resolveTime}
 
 def provideBubbleSort(collection):
     length = len(collection)
@@ -22,11 +24,6 @@ def provideBubbleSort(collection):
             break  # Stop iteration if the collection is sorted.
     return collection
 
-# @app.route("/sortElse", methods=['GET', 'POST'])
-# def index(num):
-# 	return num
-
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
 

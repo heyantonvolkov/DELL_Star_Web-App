@@ -64,6 +64,7 @@ textarea {
 .result {
 	opacity: 0;
 	transition: .2s;
+	text-align: center;
 }
 
 .result.-visible {
@@ -71,16 +72,22 @@ textarea {
 }
 
 .result p {
-	display: inline-block;
+	max-width: 400px;
 	padding: 20px;
 	background-color: white;
 	border-radius: 5px;
+}
+
+.score {
+	display: inline-block;
+	margin-bottom: 20px;
 	font-size: 20px;
 	font-weight: 900;
 }
 
-
-
+.sorted-list {
+	margin: 0 auto 20px;
+}
 
 
 
