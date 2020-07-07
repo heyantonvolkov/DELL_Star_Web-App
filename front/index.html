@@ -8,8 +8,8 @@
 <body>
 	<h1>Sorting algorithms speed test</h1>
 	
-	<label for="numbers">Share some numbers and check the time to sort</label>
-	<textarea name="numbers" id="numbers"></textarea>
+	<label for="js-numbers">Share some numbers and check the time to sort</label>
+	<textarea name="numbers" id="js-numbers"></textarea>
 
 	<div class="controls">
 		<article class="control">
@@ -17,10 +17,10 @@
 			<button id="js-buttonSortBuble">Погнали</button>
 		</article>
 
-<!--		<article class="control">-->
-<!--			<h3>Сортировка как-то еще</h3>-->
-<!--			<button id="js-buttonSortFib">Погнали</button>-->
-<!--		</article>-->
+		<article class="control">
+			<h3>Сортировка выбором</h3>
+			<button id="js-buttonSortSelection">Погнали</button>
+		</article>
 	</div>
 
 	<div class="result" id="js-result">
@@ -29,7 +29,7 @@
 		<p class="sorted-list" id="js-resultSorted">24.4 seconds</p>
 	</div>
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 	<script type="text/javascript" src="./assets/script.js"></script>
 </body>
 </html>

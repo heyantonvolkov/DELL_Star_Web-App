@@ -1,15 +1,26 @@
 window.onload = () => {
-  const buttonSortFib = document.getElementById('js-buttonSortFib');
+  const buttonSortSelection = document.getElementById('js-buttonSortSelection');
   const buttonSortBubble = document.getElementById('js-buttonSortBuble');
 
   buttonSortBubble.onclick = e => {
-    if (document.getElementById('numbers').value) {
-      const userInput = document.getElementById('numbers').value.split(', ');
+    if (document.getElementById('js-numbers').value) {
+      const userInput = document.getElementById('js-numbers').value.split(',');
       for (let i = 0; i < userInput.length; i++) {
         userInput[i] = Number(userInput[i]);
       }
+      sendSortRequest('sortBubble', userInput);
+    } else {
+      alert('Oh no! The input is empty 😭')
+    }
+  }
 
-      sendSortRequest(userInput);
+  buttonSortSelection.onclick = e => {
+    if (document.getElementById('js-numbers').value) {
+      const userInput = document.getElementById('js-numbers').value.split(',');
+      for (let i = 0; i < userInput.length; i++) {
+        userInput[i] = Number(userInput[i]);
+      }
+      sendSortRequest('sortSelection', userInput);
     } else {
       alert('Oh no! The input is empty 😭')
     }
@@ -21,34 +32,24 @@ window.onload = () => {
     document.getElementById('js-result').classList.add('-visible');
   }
 
-  async function sendSortRequest(userInput) {
-    $.post(
-        'http://89.223.26.226:5000/sortBubble',
-        JSON.stringify({"array": userInput}),
-        response => {
-          console.log(response);
-          // const result = JSON.parse(response);
-          // console.log(result); // JSON data parsed by `response.json()` call
-          // if (!result.status) {
-          //   alert('Ошибка =(');
-          // } else {
-          //   setResultScore(response.score, response.sortedInput);
-          // }
+  async function sendSortRequest(requestType, userInput) {
+    axios.post('http://89.223.26.226:5000/' + requestType, {
+      array: userInput
     })
+        .then(function (response) {
+          console.log(response);
+          setResultScore(response.data.resolveTime, response.data.result)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
   }
 
-  // async function postData(url, data) {
-  //
-  //   const response = await fetch(url, {
-  //     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-  //     mode: 'no-cors', // no-cors, *cors, same-origin
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //     },
-  //     body: JSON.stringify(data) // body data type must match "Content-Type" header
-  //   });
-  //   return response;
-  // }
+  // Заполняет текстэрию массивом произвольных чисел
+  let bigArray = [];
+  for (let i = 0; i < 3000; i++) {
+    bigArray.push(Math.floor(Math.random() * Math.floor(3000)));
+  }
+  document.getElementById('js-numbers').value = bigArray;
 }
 

@@ -72,13 +72,13 @@ textarea {
 }
 
 .result p {
-	max-width: 400px;
 	padding: 20px;
 	background-color: white;
 	border-radius: 5px;
 }
 
 .score {
+	max-width: 400px;
 	display: inline-block;
 	margin-bottom: 20px;
 	font-size: 20px;
@@ -86,7 +86,9 @@ textarea {
 }
 
 .sorted-list {
+	max-width: 900px;
 	margin: 0 auto 20px;
+	word-break: break-word;
 }
 
 

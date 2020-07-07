@@ -9,8 +9,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/sortBubble", methods=['POST'])
 def sortBubble():
-    print('INPUT', request.data)
-    print('COLLECTION', request.data.get('array'))
     collection = request.data.get('array')
     startTime = time.time()
     collection = provideBubbleSort(collection)
@@ -18,7 +16,6 @@ def sortBubble():
     return {"result": collection, "resolveTime": resolveTime}
 
 def provideBubbleSort(collection):
-    print('HERE', collection)
     length = len(collection)
     for i in range(length - 1):
         swapped = False
@@ -29,6 +26,24 @@ def provideBubbleSort(collection):
         if not swapped:
             break  # Stop iteration if the collection is sorted.
     return collection
+
+@app.route("/sortSelection", methods=['POST'])
+def sortSelection():
+    collection = request.data.get('array')
+    startTime = time.time()
+    collection = provideSelectionSort(collection)
+    resolveTime = time.time() - startTime
+    return {"result": collection, "resolveTime": resolveTime}
+
+def provideSelectionSort(arr):
+    for i in range(len(arr)):
+        small = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[small]:
+                small = j
+        arr[i], arr[small] = arr[small], arr[i]
+    return arr
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
