@@ -4,11 +4,10 @@ from flask_cors import CORS, cross_origin
 import time
 
 app = FlaskAPI(__name__)
-cors = CORS(app)
+CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/sortBubble", methods=['POST'])
-@cross_origin()
 def sortBubble():
     collection = request.data.get('array')
     startTime = time.time()
