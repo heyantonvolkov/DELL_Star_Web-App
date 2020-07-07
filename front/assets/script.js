@@ -24,7 +24,7 @@ window.onload = () => {
   async function sendSortRequest(userInput) {
     $.post(
         'http://89.223.26.226:5000/sortBubble',
-        JSON.stringify({array: userInput}),
+        JSON.stringify({"array": userInput}),
         response => {
           console.log(response);
           // const result = JSON.parse(response);

@@ -9,6 +9,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/sortBubble", methods=['POST'])
 def sortBubble():
+    print('INPUT', request.data)
     print('COLLECTION', request.data.get('array'))
     collection = request.data.get('array')
     startTime = time.time()
